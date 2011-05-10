@@ -26,7 +26,7 @@ use Math::MatrixDecomposition::Util qw(:all);
 
 BEGIN
 {
-  our $VERSION = '1.00';
+  our $VERSION = '1.01';
   our @EXPORT_OK = qw(eig);
 }
 

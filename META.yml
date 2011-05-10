@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Math-MatrixDecomposition
-version:            1.00
+version:            1.01
 abstract:           matrix decompositions and its applications
 author:
     - Ralph Schleicher <rs@ralph-schleicher.de>
@@ -12,6 +12,7 @@ build_requires:
     ExtUtils::MakeMaker:  0
 requires:
     Math::BLAS:  0
+    perl:        5.010
 no_index:
     directory:
         - t

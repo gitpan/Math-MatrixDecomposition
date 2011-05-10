@@ -16,7 +16,7 @@ use POSIX qw(DBL_EPSILON fmod);
 
 BEGIN
 {
-  our $VERSION = '1.00';
+  our $VERSION = '1.01';
   our @EXPORT_OK = qw(eps mod min max sign hypot cdiv);
   our %EXPORT_TAGS = (all => [@EXPORT_OK]);
 }
