@@ -26,7 +26,7 @@ use Math::MatrixDecomposition::Util qw(:all);
 
 BEGIN
 {
-  our $VERSION = '1.01';
+  our $VERSION = '1.02';
   our @EXPORT_OK = qw(eig);
 }
 
@@ -443,80 +443,78 @@ sub decompose
 	      # Search for rows isolating an eigenvalue
 	      # and push them down.
 	    L:
-	      if (1)
-		{
-		  for $j (reverse (0 .. $l))
-		    {
-		      $r = 0;
+	      {
+		for $j (reverse (0 .. $l))
+		  {
+		    $r = 0;
 
-		      for $i (0 .. $l)
-			{
-			  $r = 1 if $i != $j && $H[$j][$i] != 0;
-			}
+		    for $i (0 .. $l)
+		      {
+			$r = 1 if $i != $j && $H[$j][$i] != 0;
+		      }
 
-		      next if $r != 0;
+		    next if $r != 0;
 
-		      if ($j != $l)
-			{
-			  # Exchange row and column.
-			  @perm[$j, $l] = @perm[$l, $j];
+		    if ($j != $l)
+		      {
+			# Exchange row and column.
+			@perm[$j, $l] = @perm[$l, $j];
 
-			  for $i (0 .. $l)
-			    {
-			      ($H[$i][$j], $H[$i][$l])
-				= ($H[$i][$l], $H[$i][$j]);
-			    }
+			for $i (0 .. $l)
+			  {
+			    ($H[$i][$j], $H[$i][$l])
+			      = ($H[$i][$l], $H[$i][$j]);
+			  }
 
-			  for $i ($k .. $end)
-			    {
-			      ($H[$j][$i], $H[$l][$i])
-				= ($H[$l][$i], $H[$j][$i]);
-			    }
-			}
+			for $i ($k .. $end)
+			  {
+-			    ($H[$j][$i], $H[$l][$i])
+			      = ($H[$l][$i], $H[$j][$i]);
+			  }
+		      }
 
-		      $l -= 1;
-		      next L;
-		    }
-		}
+		    $l -= 1;
+		    next L;
+		  }
+	      }
 
 	      # Search for columns isolating an eigenvalue
 	      # and push them left.
 	    K:
-	      if (1)
-		{
-		  for $j ($k .. $l)
-		    {
-		      $c = 0;
+	      {
+		for $j ($k .. $l)
+		  {
+		    $c = 0;
 
-		      for $i ($k .. $l)
-			{
-			  $c = 1 if $i != $j && $H[$i][$j] != 0;
-			}
+		    for $i ($k .. $l)
+		      {
+			$c = 1 if $i != $j && $H[$i][$j] != 0;
+		      }
 
-		      next if $c != 0;
+		    next if $c != 0;
 
-		      if ($j != $k)
-			{
-			  # Exchange row and column.
-			  @perm[$j, $k] = @perm[$k, $j];
+		    if ($j != $k)
+		      {
+			# Exchange row and column.
+			@perm[$j, $k] = @perm[$k, $j];
 
-			  for $i (0 .. $l)
-			    {
-			      ($H[$i][$j], $H[$i][$k])
-				= ($H[$i][$k], $H[$i][$j]);
-			    }
+			for $i (0 .. $l)
+			  {
+			    ($H[$i][$j], $H[$i][$k])
+			      = ($H[$i][$k], $H[$i][$j]);
+			  }
 
-			  for $i ($k .. $end)
-			    {
-			      ($H[$j][$i], $H[$k][$i])
-				= ($H[$k][$i], $H[$j][$i]);
-			    }
-			}
+			for $i ($k .. $end)
+			  {
+			    ($H[$j][$i], $H[$k][$i])
+			      = ($H[$k][$i], $H[$j][$i]);
+			  }
+		      }
 
-		      $k += 1;
-		      next K;
-		    }
-		}
+		    $k += 1;
+		    next K;
+		  }
+	      }
 
 	      ## Now balance the sub-matrix in rows k to l.
 

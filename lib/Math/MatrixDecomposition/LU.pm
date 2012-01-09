@@ -20,7 +20,7 @@ use Math::MatrixDecomposition::Util qw(mod min);
 
 BEGIN
 {
-  our $VERSION = '1.01';
+  our $VERSION = '1.02';
   our @EXPORT_OK = qw(lu);
 }
 

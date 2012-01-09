@@ -49,9 +49,9 @@ ok (sign ( 0,  1) ==  0, 'sign ( 0,  1)');
 ok (sign ( 2, -1) == -2, 'sign ( 2, -1)');
 ok (sign ( 2,  0) ==  2, 'sign ( 2,  0)');
 ok (sign ( 2,  1) ==  2, 'sign ( 2,  1)');
-ok (sign (eps/9, -1) == -eps/9, 'sign (eps/9, -1)');
-ok (sign (eps/9,  0) ==  eps/9, 'sign (eps/9,  0)');
-ok (sign (eps/9,  1) ==  eps/9, 'sign (eps/9,  1)');
+ok (sign (eps/9, -1) == -(eps/9), 'sign (eps/9, -1)');
+ok (sign (eps/9,  0) ==  (eps/9), 'sign (eps/9,  0)');
+ok (sign (eps/9,  1) ==  (eps/9), 'sign (eps/9,  1)');
 
 ok (hypot (3, 4) == 5, 'hypot (3, 4)');
 
