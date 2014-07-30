@@ -26,7 +26,7 @@ use Math::MatrixDecomposition::Util qw(:all);
 
 BEGIN
 {
-  our $VERSION = '1.02';
+  our $VERSION = '1.03';
   our @EXPORT_OK = qw(eig);
 }
 
@@ -468,7 +468,7 @@ sub decompose
 
 			for $i ($k .. $end)
 			  {
--			    ($H[$j][$i], $H[$l][$i])
+			    ($H[$j][$i], $H[$l][$i])
 			      = ($H[$l][$i], $H[$j][$i]);
 			  }
 		      }
